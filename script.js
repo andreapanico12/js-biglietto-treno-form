@@ -6,10 +6,13 @@ const etàform = document.getElementById('età');
 const form = document.querySelector('.gn-biglietto');
 
 // ELEMENTI TARGET
-
+const biglietto = document.getElementById('biglietto');
 const nome = document.querySelector ('.sp-nome');
-const offerta = document.querySelector('.offerta')
-const importo = document.querySelector('.importo')
+const offerta = document.querySelector('.offerta');
+const importo = document.querySelector('.importo');
+const carrozza = document.querySelector(`.carrozza`);
+const cp = document.querySelector('.cp');
+
 
 // Costanti prezzo del treno
 const kmCost = 0.21;
@@ -36,12 +39,19 @@ form.addEventListener('submit', function(event){
 
   }
 
-  importo.innertext = prezzo.toFixed(2) + `€`
+  importo.innerText = prezzo.toFixed(2) + `€`
+
+  carrozza.innerText = Math.floor(Math.random() * 10) + 1;
+  cp.innerText = Math.floor(Math.random()* 100000) + 1;
+
+  biglietto.classList.add(`show`)
 
 })
 
-
-
+form.addEventListener('reset', function(){
+  biglietto.classList.remove('show')
+  etàform.value = '-'
+})
 
 
 
