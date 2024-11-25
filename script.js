@@ -11,29 +11,32 @@ const nome = document.querySelector ('.sp-nome');
 const offerta = document.querySelector('.offerta')
 const importo = document.querySelector('.importo')
 
-  const kmCost = 0.21;
-  const UrDiscount = 20;
-  const OvDiscount = 40;
+// Costanti prezzo del treno
+const kmCost = 0.21;
+const UrDiscount = 20;
+const OvDiscount = 40;
 
 
 form.addEventListener('submit', function(event){
   event.preventDefault();
-  nome.innerText = nomeform.value.trim();
 
+  nome.innerText = nomeform.value.trim();
+   // calcolo prezzo normale
   let prezzo = (parseInt(distanzaform.value) * kmCost)
 
+  //calcolo prezzo scontato
   if(etàform.value == "Minorenne"){
-    importo.innerText = (prezzo - (prezzo/100 * UrDiscount)).toFixed(2) + `€`
+    prezzo -=(prezzo * UrDiscount)/100
     offerta.innerText = `Offerta Junior`}
   else if (etàform.value == "Over 65"){
-    importo.innerText = (prezzo -(prezzo/100 *OvDiscount)).toFixed(2) + `€`
+    prezzo -= (prezzo * OvDiscount)/100
     offerta.innerText = `Offerta Senior`} 
   else {
-    importo.innerText = prezzo.toFixed(2) + "€"
     offerta.innerText = `Offerta Standard`
 
   }
 
+  importo.innertext = prezzo.toFixed(2) + `€`
 
 })
 
@@ -43,31 +46,3 @@ form.addEventListener('submit', function(event){
 
 
 
-// function calcoloprezzo(distanza,categoriaetà){
-//   const kmCost = 0.21;
-//   const UrDiscount = 20;
-//   const OvDiscount = 40;
-//   let price = distanza * kmCost;
-//   if (categoriaetà = 'Minorenne'){
-//     price = ( price - (price/ 100 * UrDiscount)) + `€`
-//   } else if (categoriaetà = 'Over 65'){
-//     price = ( price - (price/ 100 * OvDiscount))+`€`
-//   } else if (categoriaetà = 'Adulto') {
-//     price = price +`€`
-//   }
-    
-//   return price
-// }
-
-// function tipologiaofferta(categoriaetà){
-//   let offerta
-//   if (categoriaetà = 'Minorenne'){
-//     offerta = `Offerta Junior`
-//   } else if (categoriaetà = `Over 65`){
-//     offerta = 'Offerta Senior'
-//   } else if (categoriaetà = `Adulto`){
-//     offerta = `Offerta Standard`
-//   }
-    
-//   return offerta
-// }
