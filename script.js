@@ -1,7 +1,7 @@
 // ELEMENTI FORM
 
 const nomeform = document.getElementById('nome');
-const distanzaform = document.getElementById('chilometri');
+const distanzaform = document.getElementById('distanza');
 const etàform = document.getElementById('età');
 const form = document.querySelector('.gn-biglietto');
 
@@ -30,16 +30,16 @@ form.addEventListener('submit', function(event){
   //calcolo prezzo scontato
   if(etàform.value == "Minorenne"){
     prezzo -=(prezzo * UrDiscount)/100
-    offerta.innerText = `Offerta Junior`}
+    offerta.innerText = 'Offerta Junior'}
   else if (etàform.value == "Over 65"){
     prezzo -= (prezzo * OvDiscount)/100
-    offerta.innerText = `Offerta Senior`} 
+    offerta.innerText = 'Offerta Senior'} 
   else {
-    offerta.innerText = `Offerta Standard`
+    offerta.innerText = 'Offerta Standard'
 
   }
 
-  importo.innerText = prezzo.toFixed(2) + `€`
+  importo.innerText = `${prezzo.toFixed(2)} €`
 
   carrozza.innerText = Math.floor(Math.random() * 10) + 1;
   cp.innerText = Math.floor(Math.random()* 100000) + 1;
